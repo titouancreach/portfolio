@@ -2,8 +2,11 @@ import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
+import TextField from 'material-ui/TextField';
 import { FormControl, FormHelperText } from 'material-ui/Form';
+import Input, { InputLabel } from 'material-ui/Input';
+import Icon from 'material-ui/Icon';
+import Button from 'material-ui/Button';
 
 const styles = theme => ({
   root: {
@@ -13,32 +16,125 @@ const styles = theme => ({
   paper: {
     padding: 16
   },
+  iconButton: {
+    marginLeft: theme.spacing.unit,
+  },
+  inputContainer: {
+    marginBottom: theme.spacing.unit * 2
+  }
 });
 
-const Contact = (props) => {
+class Contact extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: {
+        validationStarted: false,
+        text: ''
+      },
+      subject: {
+        validationStarted: false,
+        text: ''
+      },
+      message: {
+        validationStarted: false,
+        text: ''
+      }
+    }
+  }
 
-  const {classes} = props;
-  return (
-    <div className={classes.root}>
-      <Paper elevation={4} className={classes.paper}>
-        <Typography variant="headline" component="h3">
-          Get in touch
-        </Typography>
-        <FormControl fullWidth className={classes.formControl}>
-            <InputLabel htmlFor="email">email</InputLabel>
-            <Input />
-        </FormControl>
-        <FormControl fullWidth className={classes.formControl}>
-          <InputLabel htmlFor="object">object</InputLabel>
-          <Input />
-        </FormControl>
-        <FormControl fullWidth className={classes.formControl}>
-          <InputLabel htmlFor="message">Message</InputLabel>
-          <Input multiline />
-        </FormControl>
-      </Paper>
-    </div>
-  );
+  isEmailValid(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  isEmpty(s) {
+    return !s
+  }
+
+  isShort(s) {
+    return s.length < 10;
+  }
+
+  isValid(key) {
+    const {text} = this.state[key];
+    switch (key) {
+      case 'email': {
+        return this.isEmailValid(text) && !this.isEmpty(text)
+      }
+      case 'subject':
+      case 'message':
+        return !this.isShort(text)
+    }
+  }
+
+  isAllValid() {
+    return Object.keys(this.state)
+      .every(::this.isValid)
+  }
+
+  assignState(key) {
+    return e => {
+      this.setState({
+        [key]: {
+          text: e.target.value,
+          validationStarted: true
+        }
+      })
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    fetch('https://jumprock.co/mail/titouancreach', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.email.text,
+        subject: this.state.subject.text,
+        message: this.state.message.text    
+      })
+    })
+  }
+
+  render() {
+    const {classes} = this.props;
+    return (
+      <div className={classes.root}>
+        <Paper elevation={4} className={classes.paper}>
+          <Typography variant="headline" component="h3">
+            Get in touch
+          </Typography>
+          <form>
+            <div className={classes.inputContainer}>
+              <FormControl fullWidth className={classes.formControl} error={!this.isValid('email') && this.state.email.validationStarted} margin="normal">
+                <InputLabel htmlFor="email">email</InputLabel>
+                <Input id="email" value={this.state.email.text} onChange={this.assignState('email')} />
+                {!this.isValid('email') && this.state.email.validationStarted ? <FormHelperText id="">Invalid email</FormHelperText> : null}
+              </FormControl>
+              <FormControl fullWidth className={classes.formControl} error={!this.isValid('subject') && this.state.subject.validationStarted} margin="normal">
+                <InputLabel htmlFor="subject" >subject</InputLabel>
+                <Input id="subject" value={this.state.subject.text} onChange={this.assignState('subject')} />
+                {!this.isValid('subject') && this.state.subject.validationStarted ? <FormHelperText id="">Invalid subject, at least 10 characters</FormHelperText> : null}
+              </FormControl>
+              <FormControl fullWidth className={classes.formControl} error={!this.isValid('message') && this.state.message.validationStarted} margin="normal">
+                <InputLabel htmlFor="message">message</InputLabel>
+                <Input id="message" value={this.state.message.text} onChange={this.assignState('message')} />
+                {!this.isValid('message') && this.state.message.validationStarted ? <FormHelperText id="">Invalid message, at least 10 characters</FormHelperText> : null}
+              </FormControl>
+            </div>
+            <Button variant="raised" color="primary" type="submit" onClick={::this.handleSubmit} disabled={!this.isAllValid()}>
+              Send
+              <Icon className={classes.iconButton}>send</Icon>
+            </Button>
+          </form>
+        </Paper>
+      </div>
+    );
+  }
 };
 
 export default withStyles(styles)(Contact);

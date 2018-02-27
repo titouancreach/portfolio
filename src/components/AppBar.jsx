@@ -7,7 +7,6 @@ import Button from 'material-ui/Button';
 import {Link, withRouter} from 'react-router-dom';
 
 
-
 const styles = {
   root: {
     flexGrow: 1,
@@ -21,7 +20,7 @@ const styles = {
   }
 };
 
-function ButtonAppBar(props) {
+function Appbar(props) {
   const {classes, history} = props;
   return (
     <div className={classes.root}>
@@ -39,4 +38,4 @@ function ButtonAppBar(props) {
   );
 }
 
-export default withRouter(withStyles(styles)(ButtonAppBar));
+export default withRouter(withStyles(styles)(Appbar));
