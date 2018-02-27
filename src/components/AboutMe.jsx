@@ -1,9 +1,12 @@
 import React from 'react';
 
-import { withStyles } from 'material-ui/styles';
+import {Link} from 'react-router-dom';
+import {withStyles} from 'material-ui/styles';
+
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
+
 
 import Photo from '../images/photo.jpg';
 
@@ -28,7 +31,7 @@ const AboutMe = (props) => {
         <CardMedia
           className={classes.media}
           image={Photo}
-          title="Contemplative Reptile"
+          title="titouancreach"
         />
         <CardContent>
           <Typography variant="headline" component="h2">
@@ -36,7 +39,7 @@ const AboutMe = (props) => {
           </Typography>
           <Typography component="p">
             I'm Titouan, full stack web developer. I love new technology and I spend my time
-            writing functional code in React or Vue.
+            writing functional code in React and Vue.
             <br/><br/>
             Curious ?
             <br/>
@@ -46,7 +49,7 @@ const AboutMe = (props) => {
           <Button size="small" color="primary">
             Experience
           </Button>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" href="https://github.com/titouancreach/portfolio">
             website source code
           </Button>
         </CardActions>

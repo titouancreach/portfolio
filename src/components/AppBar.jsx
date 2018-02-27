@@ -4,6 +4,8 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
+import {Link, withRouter} from 'react-router-dom';
+
 
 
 const styles = {
@@ -20,7 +22,7 @@ const styles = {
 };
 
 function ButtonAppBar(props) {
-  const { classes } = props;
+  const {classes, history} = props;
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -28,13 +30,13 @@ function ButtonAppBar(props) {
           <Typography variant="title" color="inherit" className={classes.flex}>
             Portfolio
           </Typography>
-          <Button color="inherit">About me</Button>
+          <Button color="inherit" onClick={() => history.push('/')}>About me</Button>
           <Button color="inherit">Education and Experience</Button>
-          <Button color="inherit">Contact</Button>
+          <Button color="inherit" onClick={() => history.push('/contact')}>Contact</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-export default withStyles(styles)(ButtonAppBar)
+export default withRouter(withStyles(styles)(ButtonAppBar));
