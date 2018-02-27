@@ -30,7 +30,7 @@ function ButtonAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            Title
+            TOTO
           </Typography>
           <Button color="inherit">About me</Button>
           <Button color="inherit">Education and Experience</Button>
