@@ -4,6 +4,7 @@ import {Switch, Route} from 'react-router-dom'
 
 import AboutMe from './AboutMe.jsx';
 import Contact from './Contact.jsx';
+import Experience from './Experience.jsx';
 
 const styles = {
   content: {
@@ -25,6 +26,11 @@ const Content = (props) => {
         <Route path="/contact" render={() => (
           <div className={classes.content}>
             <Contact />
+          </div>
+        )}/>
+        <Route path="/experience" render={() => (
+          <div className={classes.content}>
+            <Experience />
           </div>
         )}/>
       </Switch>

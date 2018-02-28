@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
 import {withStyles} from 'material-ui/styles';
 
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';

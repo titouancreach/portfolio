@@ -30,7 +30,7 @@ function Appbar(props) {
             Portfolio
           </Typography>
           <Button color="inherit" onClick={() => history.push('/')}>About me</Button>
-          <Button color="inherit">Education and Experience</Button>
+          <Button color="inherit" onClick={() => history.push('/experience')}>Education and Experience</Button>
           <Button color="inherit" onClick={() => history.push('/contact')}>Contact</Button>
         </Toolbar>
       </AppBar>
