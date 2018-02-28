@@ -2,7 +2,6 @@ import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import TextField from 'material-ui/TextField';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Input, { InputLabel } from 'material-ui/Input';
 import Icon from 'material-ui/Icon';
@@ -84,22 +83,6 @@ class Contact extends React.Component {
     }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    fetch('https://jumprock.co/mail/titouancreach', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: this.state.email.text,
-        subject: this.state.subject.text,
-        message: this.state.message.text    
-      })
-    })
-  }
-
   render() {
     const {classes} = this.props;
     return (
@@ -108,25 +91,26 @@ class Contact extends React.Component {
           <Typography variant="headline" component="h3">
             Get in touch
           </Typography>
-          <form>
+          <form action="https://jumprock.co/mail/titouancreach" method="post">
             <div className={classes.inputContainer}>
               <FormControl fullWidth className={classes.formControl} error={!this.isValid('email') && this.state.email.validationStarted} margin="normal">
                 <InputLabel htmlFor="email">email</InputLabel>
-                <Input id="email" value={this.state.email.text} onChange={this.assignState('email')} />
+                <Input id="email" name="email" value={this.state.email.text} onChange={this.assignState('email')} />
                 {!this.isValid('email') && this.state.email.validationStarted ? <FormHelperText id="">Invalid email</FormHelperText> : null}
               </FormControl>
               <FormControl fullWidth className={classes.formControl} error={!this.isValid('subject') && this.state.subject.validationStarted} margin="normal">
                 <InputLabel htmlFor="subject" >subject</InputLabel>
-                <Input id="subject" value={this.state.subject.text} onChange={this.assignState('subject')} />
+                <Input id="subject" name="subject" value={this.state.subject.text} onChange={this.assignState('subject')} />
                 {!this.isValid('subject') && this.state.subject.validationStarted ? <FormHelperText id="">Invalid subject, at least 10 characters</FormHelperText> : null}
               </FormControl>
               <FormControl fullWidth className={classes.formControl} error={!this.isValid('message') && this.state.message.validationStarted} margin="normal">
                 <InputLabel htmlFor="message">message</InputLabel>
-                <Input id="message" value={this.state.message.text} onChange={this.assignState('message')} />
+                <Input id="message" name="message" value={this.state.message.text} onChange={this.assignState('message')} />
                 {!this.isValid('message') && this.state.message.validationStarted ? <FormHelperText id="">Invalid message, at least 10 characters</FormHelperText> : null}
               </FormControl>
+              <input type="hidden" name="after" value={window.location.origin} />
             </div>
-            <Button variant="raised" color="primary" type="submit" onClick={::this.handleSubmit} disabled={!this.isAllValid()}>
+            <Button variant="raised" color="primary" type="submit" disabled={!this.isAllValid()}>
               Send
               <Icon className={classes.iconButton}>send</Icon>
             </Button>
