@@ -108,7 +108,7 @@ class Contact extends React.Component {
                 <Input id="message" name="message" value={this.state.message.text} onChange={this.assignState('message')} />
                 {!this.isValid('message') && this.state.message.validationStarted ? <FormHelperText id="">Invalid message, at least 10 characters</FormHelperText> : null}
               </FormControl>
-              <input type="hidden" name="after" value={window.location.origin} />
+              <input type="hidden" name="after" value={`${window.location.origin}/portfolio`} />
             </div>
             <Button variant="raised" color="primary" type="submit" disabled={!this.isAllValid()}>
               Send
