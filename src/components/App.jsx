@@ -4,9 +4,6 @@ import AppBar from './AppBar.jsx';
 import Content from './Content.jsx';
 import theme from '../styles/theme';
 
-console.log(theme);
-
-
 const App = () => {
   return (
     <MuiThemeProvider theme={theme}>

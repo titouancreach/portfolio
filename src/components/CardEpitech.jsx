@@ -34,7 +34,7 @@ const CardEpitech = (props) => {
             Epitech
           </Typography>
           <Typography component="p">
-            Graduated from Epitech Rennes (promotion 2017). I saw the basis of programming. <br/>
+            Graduated from Epitech Rennes (promotion 2017). I saw the basics of programming. <br/>
             At the menu:
           </Typography>
           <List dense>
@@ -60,7 +60,7 @@ const CardEpitech = (props) => {
             </ListItem>
           </List>
           <Typography component="p">
-            Beside, I had the opportunity to spent one year in Dublin (Ireland) where I was graduated from <StyledLink href="https://www.griffith.ie/"> Griffith College </StyledLink>(Business certification) <br/>
+            Beside, I had the opportunity to travel one year in Dublin (Ireland) where I was graduated from <StyledLink href="https://www.griffith.ie/"> Griffith College </StyledLink>(Business certification) <br/>
           </Typography>
         </CardContent>
       </Card>

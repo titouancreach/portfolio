@@ -6,8 +6,6 @@ import Vue from '../images/vue.png';
 import Github from '../images/github.png';
 import StyledLink from './StyledLink.jsx';
 
-import {withRouter} from 'react-router-dom';
-
 import Card, {CardContent, CardMedia, CardActions} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
@@ -38,7 +36,7 @@ const style = theme => ({
 
 
 const CardExperience = (props) => {
-  const {classes, history} = props;
+  const {classes} = props;
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
@@ -52,7 +50,7 @@ const CardExperience = (props) => {
             Contribution
           </Typography>
           <Typography component="p">
-            I love open source and I try to contribute to it when I got some time. Here is some contribution I made
+            I love open source and I try to contribute to it when I got some time. Here is some contributions I made
           </Typography>
           <List dense>
             <ListItem>
@@ -69,7 +67,7 @@ const CardExperience = (props) => {
             </ListItem>
           </List>
           <Typography component="p">
-            Most of the time, I use Vuejs, React in a esNext environment. I love trying some other language such as <StyledLink href="http://elm-lang.org/">Elm</StyledLink> or
+            Most of the time, I use Vuejs, React in a esNext environment. I love trying some other languages such as <StyledLink href="http://elm-lang.org/">Elm</StyledLink> or
             <StyledLink href="https://reasonml.github.io/"> Reason </StyledLink>.
           </Typography>
         </CardContent>
@@ -82,7 +80,7 @@ const CardExperience = (props) => {
       </Card>
     </div>
   );
-}
+};
 
-export default withRouter(withStyles(style)(CardExperience));
+export default withStyles(style)(CardExperience);
 
