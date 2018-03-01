@@ -50,7 +50,7 @@ const CardExperience = (props) => {
             Contribution
           </Typography>
           <Typography component="p">
-            I love open source and I try to contribute to it when I got some time. Here is some contributions I made
+            I love open source and I try to contribute to it when I got some time. Here are some contributions I made
           </Typography>
           <List dense>
             <ListItem>
