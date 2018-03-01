@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {withStyles} from 'material-ui/styles';
+import {withRouter} from 'react-router-dom';
 
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
@@ -23,7 +24,7 @@ const styles = {
 };
 
 const AboutMe = (props) => {
-  const {classes} = props;
+  const {classes, history} = props;
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
@@ -45,7 +46,7 @@ const AboutMe = (props) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" onClick={() => history.push('/experience')}>
             Experience
           </Button>
           <Button size="small" color="primary" href="https://github.com/titouancreach/portfolio">
@@ -55,7 +56,7 @@ const AboutMe = (props) => {
       </Card>
     </div>
   );
-}
+};
 
-export default withStyles(styles)(AboutMe);
+export default withRouter(withStyles(styles)(AboutMe));
 

@@ -11,8 +11,11 @@ const styles = {
   root: {
     flexGrow: 1,
   },
-  flex: {
+  title: {
     flex: 1,
+    '&:hover': {
+      cursor: 'pointer'
+    }
   },
   menuButton: {
     marginLeft: -12,
@@ -26,7 +29,7 @@ function Appbar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="title" color="inherit" className={classes.flex}>
+          <Typography variant="title" color="inherit" className={classes.title} onClick={() => history.push('/')}>
             Portfolio
           </Typography>
           <Button color="inherit" onClick={() => history.push('/')}>About me</Button>

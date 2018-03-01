@@ -1,15 +1,20 @@
 import React from 'react';
-
+import {MuiThemeProvider} from 'material-ui/styles';
 import AppBar from './AppBar.jsx';
 import Content from './Content.jsx';
+import theme from '../styles/theme';
+
+console.log(theme);
 
 
 const App = () => {
   return (
-    <div>
-      <AppBar />
-      <Content />
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <div>
+        <AppBar />
+        <Content />
+      </div>
+    </MuiThemeProvider>
   )
 };
 
