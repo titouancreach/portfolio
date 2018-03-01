@@ -6,6 +6,7 @@ import Ocaml from '../images/ocaml.svg';
 import CPP from '../images/cpp.png';
 import C from '../images/c.png';
 import Java from '../images/java.png';
+import StyledLink from './StyledLink.jsx';
 
 import Card, {CardContent, CardMedia} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
@@ -59,7 +60,7 @@ const CardEpitech = (props) => {
             </ListItem>
           </List>
           <Typography component="p">
-            Beside, I had the opportunity to spent one year in Dublin (Ireland) where I was graduated from <a href="https://www.griffith.ie/"> Griffith College </a>(Business certification) <br/>
+            Beside, I had the opportunity to spent one year in Dublin (Ireland) where I was graduated from <StyledLink href="https://www.griffith.ie/"> Griffith College </StyledLink>(Business certification) <br/>
           </Typography>
         </CardContent>
       </Card>

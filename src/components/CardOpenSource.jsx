@@ -4,6 +4,7 @@ import OpenSource from '../images/opensource.png';
 import Hyperapp from '../images/hyperapp.jpg';
 import Vue from '../images/vue.png';
 import Github from '../images/github.png';
+import StyledLink from './StyledLink.jsx';
 
 import {withRouter} from 'react-router-dom';
 
@@ -57,19 +58,19 @@ const CardExperience = (props) => {
             <ListItem>
               <Avatar src={Vue} />
               <ListItemText
-                primary={<p>(creator) <a href="https://github.com/titouancreach/vuejs-redux">vuejs-redux</a></p>}
+                primary={<p>(creator) <StyledLink href="https://github.com/titouancreach/vuejs-redux">vuejs-redux</StyledLink></p>}
                 secondary="Highly scalable Redux connector to Vuejs component using render props"/>
             </ListItem>
             <ListItem>
               <Avatar src={Hyperapp} />
               <ListItemText
-                primary={<p>(contributor) <a href="https://github.com/hyperapp/hyperapp">Hyperapp</a> and <a href="https://github.com/hyperapp/fx">Hyperapp/fx</a></p>}
+                primary={<p>(contributor) <StyledLink href="https://github.com/hyperapp/hyperapp">Hyperapp</StyledLink> and <StyledLink href="https://github.com/hyperapp/fx">Hyperapp/fx</StyledLink></p>}
                 secondary="1 kB JavaScript library for building web applications / Effect as data, pattern from ELM to handle side effects in functional applications"/>
             </ListItem>
           </List>
           <Typography component="p">
-            Most of the time, I use Vuejs, React in a esNext environment. I love trying some other language such as <a href="http://elm-lang.org/">Elm</a> or
-            <a href="https://reasonml.github.io/">Reason</a>.
+            Most of the time, I use Vuejs, React in a esNext environment. I love trying some other language such as <StyledLink href="http://elm-lang.org/">Elm</StyledLink> or
+            <StyledLink href="https://reasonml.github.io/"> Reason </StyledLink>.
           </Typography>
         </CardContent>
         <CardActions>
