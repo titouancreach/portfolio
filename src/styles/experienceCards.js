@@ -1,4 +1,3 @@
-
 export default {
   card: {
     maxWidth: '60%',

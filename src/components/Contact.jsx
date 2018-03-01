@@ -1,22 +1,22 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
+import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Input, { InputLabel } from 'material-ui/Input';
+import {FormControl, FormHelperText} from 'material-ui/Form';
+import Input, {InputLabel} from 'material-ui/Input';
 import Icon from 'material-ui/Icon';
 import Button from 'material-ui/Button';
 
 const styles = theme => ({
   root: {
     maxWidth: '60%',
-    margin: 'auto',
+    margin: 'auto'
   },
   paper: {
     padding: 16
   },
   iconButton: {
-    marginLeft: theme.spacing.unit,
+    marginLeft: theme.spacing.unit
   },
   inputContainer: {
     marginBottom: theme.spacing.unit * 2
@@ -39,7 +39,7 @@ class Contact extends React.Component {
         validationStarted: false,
         text: ''
       }
-    }
+    };
   }
 
   isEmailValid(email) {
@@ -48,7 +48,7 @@ class Contact extends React.Component {
   }
 
   isEmpty(s) {
-    return !s
+    return !s;
   }
 
   isShort(s) {
@@ -59,17 +59,16 @@ class Contact extends React.Component {
     const {text} = this.state[key];
     switch (key) {
       case 'email': {
-        return this.isEmailValid(text) && !this.isEmpty(text)
+        return this.isEmailValid(text) && !this.isEmpty(text);
       }
       case 'subject':
       case 'message':
-        return !this.isShort(text)
+        return !this.isShort(text);
     }
   }
 
   isAllValid() {
-    return Object.keys(this.state)
-      .every(::this.isValid)
+    return Object.keys(this.state).every(::this.isValid);
   }
 
   assignState(key) {
@@ -79,8 +78,8 @@ class Contact extends React.Component {
           text: e.target.value,
           validationStarted: true
         }
-      })
-    }
+      });
+    };
   }
 
   render() {
@@ -93,24 +92,80 @@ class Contact extends React.Component {
           </Typography>
           <form action="https://jumprock.co/mail/titouancreach" method="post">
             <div className={classes.inputContainer}>
-              <FormControl fullWidth className={classes.formControl} error={!this.isValid('email') && this.state.email.validationStarted} margin="normal">
+              <FormControl
+                fullWidth
+                className={classes.formControl}
+                error={
+                  !this.isValid('email') && this.state.email.validationStarted
+                }
+                margin="normal">
                 <InputLabel htmlFor="email">email</InputLabel>
-                <Input id="email" name="email" value={this.state.email.text} onChange={this.assignState('email')} />
-                {!this.isValid('email') && this.state.email.validationStarted ? <FormHelperText id="">Invalid email</FormHelperText> : null}
+                <Input
+                  id="email"
+                  name="email"
+                  value={this.state.email.text}
+                  onChange={this.assignState('email')}
+                />
+                {!this.isValid('email') &&
+                this.state.email.validationStarted ? (
+                  <FormHelperText id="">Invalid email</FormHelperText>
+                ) : null}
               </FormControl>
-              <FormControl fullWidth className={classes.formControl} error={!this.isValid('subject') && this.state.subject.validationStarted} margin="normal">
-                <InputLabel htmlFor="subject" >subject</InputLabel>
-                <Input id="subject" name="subject" value={this.state.subject.text} onChange={this.assignState('subject')} />
-                {!this.isValid('subject') && this.state.subject.validationStarted ? <FormHelperText id="">Invalid subject, at least 10 characters</FormHelperText> : null}
+              <FormControl
+                fullWidth
+                className={classes.formControl}
+                error={
+                  !this.isValid('subject') &&
+                  this.state.subject.validationStarted
+                }
+                margin="normal">
+                <InputLabel htmlFor="subject">subject</InputLabel>
+                <Input
+                  id="subject"
+                  name="subject"
+                  value={this.state.subject.text}
+                  onChange={this.assignState('subject')}
+                />
+                {!this.isValid('subject') &&
+                this.state.subject.validationStarted ? (
+                  <FormHelperText id="">
+                    Invalid subject, at least 10 characters
+                  </FormHelperText>
+                ) : null}
               </FormControl>
-              <FormControl fullWidth className={classes.formControl} error={!this.isValid('message') && this.state.message.validationStarted} margin="normal">
+              <FormControl
+                fullWidth
+                className={classes.formControl}
+                error={
+                  !this.isValid('message') &&
+                  this.state.message.validationStarted
+                }
+                margin="normal">
                 <InputLabel htmlFor="message">message</InputLabel>
-                <Input id="message" name="message" value={this.state.message.text} onChange={this.assignState('message')} />
-                {!this.isValid('message') && this.state.message.validationStarted ? <FormHelperText id="">Invalid message, at least 10 characters</FormHelperText> : null}
+                <Input
+                  id="message"
+                  name="message"
+                  value={this.state.message.text}
+                  onChange={this.assignState('message')}
+                />
+                {!this.isValid('message') &&
+                this.state.message.validationStarted ? (
+                  <FormHelperText id="">
+                    Invalid message, at least 10 characters
+                  </FormHelperText>
+                ) : null}
               </FormControl>
-              <input type="hidden" name="after" value={`${window.location.origin}/portfolio`} />
+              <input
+                type="hidden"
+                name="after"
+                value={`${window.location.origin}/portfolio`}
+              />
             </div>
-            <Button variant="raised" color="primary" type="submit" disabled={!this.isAllValid()}>
+            <Button
+              variant="raised"
+              color="primary"
+              type="submit"
+              disabled={!this.isAllValid()}>
               Send
               <Icon className={classes.iconButton}>send</Icon>
             </Button>
@@ -119,6 +174,6 @@ class Contact extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default withStyles(styles)(Contact);

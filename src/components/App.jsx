@@ -12,7 +12,7 @@ const App = () => {
         <Content />
       </div>
     </MuiThemeProvider>
-  )
+  );
 };
 
 export default App;

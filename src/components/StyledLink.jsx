@@ -1,5 +1,5 @@
-import React from 'react'
-import {withStyles} from 'material-ui/styles';
+import React from 'react';
+import {withStyles} from 'material-ui/styles';
 
 const style = ({palette}) => {
   return {
@@ -10,12 +10,14 @@ const style = ({palette}) => {
         textDecoration: 'underline'
       }
     }
-  }
+  };
 };
 
 const StyledLink = ({classes, children, ...props}) => {
   return (
-    <a {...props} className={classes.link}>{children}</a>
+    <a {...props} className={classes.link}>
+      {children}
+    </a>
   );
 };
 

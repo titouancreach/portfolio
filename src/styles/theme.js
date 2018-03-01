@@ -8,7 +8,7 @@ export default createMuiTheme({
       light: lightGreen[100],
       main: lightGreen[400],
       dark: lightGreen[600],
-      contrastText: '#222',
+      contrastText: '#222'
     },
     secondary: brown
   }
