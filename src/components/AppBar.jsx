@@ -1,29 +1,29 @@
-import React from 'react';
-import {withStyles} from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import {withRouter} from 'react-router-dom';
+import React from 'react'
+import {withStyles} from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import {withRouter} from 'react-router-dom'
 
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   title: {
     flex: 1,
     '&:hover': {
-      cursor: 'pointer'
-    }
+      cursor: 'pointer',
+    },
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20
-  }
-};
+    marginRight: 20,
+  },
+}
 
 function Appbar(props) {
-  const {classes, history} = props;
+  const {classes, history} = props
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -32,7 +32,8 @@ function Appbar(props) {
             variant="title"
             color="inherit"
             className={classes.title}
-            onClick={() => history.push('/')}>
+            onClick={() => history.push('/')}
+          >
             Portfolio
           </Typography>
           <Button color="inherit" onClick={() => history.push('/')}>
@@ -47,7 +48,7 @@ function Appbar(props) {
         </Toolbar>
       </AppBar>
     </div>
-  );
+  )
 }
 
-export default withRouter(withStyles(styles)(Appbar));
+export default withRouter(withStyles(styles)(Appbar))

@@ -1,74 +1,76 @@
-import React from 'react';
-import {withStyles} from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import {FormControl, FormHelperText} from 'material-ui/Form';
-import Input, {InputLabel} from 'material-ui/Input';
-import Icon from 'material-ui/Icon';
-import Button from 'material-ui/Button';
+import React from 'react'
+import {withStyles} from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import FormControl from '@material-ui/core/FormControl'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
+import Icon from '@material-ui/core/Icon'
+import Button from '@material-ui/core/Button'
 
 const styles = theme => ({
   root: {
     maxWidth: '60%',
-    margin: 'auto'
+    margin: 'auto',
   },
   paper: {
-    padding: 16
+    padding: 16,
   },
   iconButton: {
-    marginLeft: theme.spacing.unit
+    marginLeft: theme.spacing.unit,
   },
   inputContainer: {
-    marginBottom: theme.spacing.unit * 2
-  }
-});
+    marginBottom: theme.spacing.unit * 2,
+  },
+})
 
 class Contact extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       email: {
         validationStarted: false,
-        text: ''
+        text: '',
       },
       subject: {
         validationStarted: false,
-        text: ''
+        text: '',
       },
       message: {
         validationStarted: false,
-        text: ''
-      }
-    };
+        text: '',
+      },
+    }
   }
 
   isEmailValid(email) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return re.test(String(email).toLowerCase())
   }
 
   isEmpty(s) {
-    return !s;
+    return !s
   }
 
   isShort(s) {
-    return s.length < 10;
+    return s.length < 10
   }
 
   isValid(key) {
-    const {text} = this.state[key];
+    const {text} = this.state[key]
     switch (key) {
       case 'email': {
-        return this.isEmailValid(text) && !this.isEmpty(text);
+        return this.isEmailValid(text) && !this.isEmpty(text)
       }
       case 'subject':
       case 'message':
-        return !this.isShort(text);
+        return !this.isShort(text)
     }
   }
 
   isAllValid() {
-    return Object.keys(this.state).every(::this.isValid);
+    return Object.keys(this.state).every(this.isValid.bind(this))
   }
 
   assignState(key) {
@@ -76,14 +78,14 @@ class Contact extends React.Component {
       this.setState({
         [key]: {
           text: e.target.value,
-          validationStarted: true
-        }
-      });
-    };
+          validationStarted: true,
+        },
+      })
+    }
   }
 
   render() {
-    const {classes} = this.props;
+    const {classes} = this.props
     return (
       <div className={classes.root}>
         <Paper elevation={4} className={classes.paper}>
@@ -98,7 +100,8 @@ class Contact extends React.Component {
                 error={
                   !this.isValid('email') && this.state.email.validationStarted
                 }
-                margin="normal">
+                margin="normal"
+              >
                 <InputLabel htmlFor="email">email</InputLabel>
                 <Input
                   id="email"
@@ -118,7 +121,8 @@ class Contact extends React.Component {
                   !this.isValid('subject') &&
                   this.state.subject.validationStarted
                 }
-                margin="normal">
+                margin="normal"
+              >
                 <InputLabel htmlFor="subject">subject</InputLabel>
                 <Input
                   id="subject"
@@ -140,7 +144,8 @@ class Contact extends React.Component {
                   !this.isValid('message') &&
                   this.state.message.validationStarted
                 }
-                margin="normal">
+                margin="normal"
+              >
                 <InputLabel htmlFor="message">message</InputLabel>
                 <Input
                   id="message"
@@ -165,15 +170,16 @@ class Contact extends React.Component {
               variant="raised"
               color="primary"
               type="submit"
-              disabled={!this.isAllValid()}>
+              disabled={!this.isAllValid()}
+            >
               Send
               <Icon className={classes.iconButton}>send</Icon>
             </Button>
           </form>
         </Paper>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(Contact);
+export default withStyles(styles)(Contact)

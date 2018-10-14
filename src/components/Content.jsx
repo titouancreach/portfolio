@@ -1,19 +1,19 @@
-import React from 'react';
-import {withStyles} from 'material-ui/styles';
-import {Switch, Route} from 'react-router-dom';
+import React from 'react'
+import {withStyles} from '@material-ui/core/styles'
+import {Switch, Route} from 'react-router-dom'
 
-import AboutMe from './AboutMe.jsx';
-import Contact from './Contact.jsx';
-import Experience from './Experience.jsx';
+import AboutMe from './AboutMe.jsx'
+import Contact from './Contact.jsx'
+import Experience from './Experience.jsx'
 
 const styles = {
   content: {
-    margin: 24
-  }
-};
+    margin: 24,
+  },
+}
 
 const Content = props => {
-  const {classes} = props;
+  const {classes} = props
   return (
     <main>
       <Switch>
@@ -44,7 +44,7 @@ const Content = props => {
         />
       </Switch>
     </main>
-  );
-};
+  )
+}
 
-export default withStyles(styles)(Content);
+export default withStyles(styles)(Content)

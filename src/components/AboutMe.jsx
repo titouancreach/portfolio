@@ -1,36 +1,36 @@
-import React from 'react';
+import React from 'react'
 
-import {withStyles} from 'material-ui/styles';
-import {withRouter} from 'react-router-dom';
+import {withStyles} from '@material-ui/core/styles'
 
-import Card, {
-  CardActions,
-  CardContent,
-  CardMedia,
-  CardHeader
-} from 'material-ui/Card';
-import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
-import IconButton from 'material-ui/IconButton';
-import FontAwesome from 'react-fontawesome';
+import {withRouter} from 'react-router-dom'
 
-import Photo from '../images/photo.jpg';
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardHeader from '@material-ui/core/CardHeader'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import FontAwesome from 'react-fontawesome'
+
+import Photo from '../images/photo.jpg'
 
 const styles = {
   card: {
     maxWidth: '60%',
-    margin: 'auto'
+    margin: 'auto',
   },
   media: {
-    height: 500
+    height: 500,
   },
   root: {
-    margin: 24
-  }
-};
+    margin: 24,
+  },
+}
 
 const AboutMe = props => {
-  const {classes, history} = props;
+  const {classes, history} = props
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
@@ -66,27 +66,28 @@ const AboutMe = props => {
             spend my time writing functional code in React and Vue.
             <br />
             <br />
-            Curious ?
-            <br />
+            Curious ?<br />
           </Typography>
         </CardContent>
         <CardActions>
           <Button
             size="small"
             color="primary"
-            onClick={() => history.push('/experience')}>
+            onClick={() => history.push('/experience')}
+          >
             Experience
           </Button>
           <Button
             size="small"
             color="primary"
-            href="https://github.com/titouancreach/portfolio">
+            href="https://github.com/titouancreach/portfolio"
+          >
             website source code
           </Button>
         </CardActions>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default withRouter(withStyles(styles)(AboutMe));
+export default withRouter(withStyles(styles)(AboutMe))

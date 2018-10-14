@@ -1,5 +1,5 @@
-import React from 'react';
-import {withStyles} from 'material-ui/styles';
+import React from 'react'
+import {withStyles} from '@material-ui/core/styles'
 
 const style = ({palette}) => {
   return {
@@ -7,18 +7,18 @@ const style = ({palette}) => {
       color: palette.secondary.dark,
       textDecoration: 'none',
       '&:hover': {
-        textDecoration: 'underline'
-      }
-    }
-  };
-};
+        textDecoration: 'underline',
+      },
+    },
+  }
+}
 
 const StyledLink = ({classes, children, ...props}) => {
   return (
     <a {...props} className={classes.link}>
       {children}
     </a>
-  );
-};
+  )
+}
 
-export default withStyles(style)(StyledLink);
+export default withStyles(style)(StyledLink)

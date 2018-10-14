@@ -1,38 +1,44 @@
-import React from 'react';
-import {withStyles} from 'material-ui/styles';
-import OpenSource from '../images/opensource.png';
-import Hyperapp from '../images/hyperapp.jpg';
-import Vue from '../images/vue.png';
-import Github from '../images/github.png';
-import StyledLink from './StyledLink.jsx';
+import React from 'react'
+import {withStyles} from '@material-ui/core/styles'
+import OpenSource from '../images/opensource.png'
+import Hyperapp from '../images/hyperapp.jpg'
+import Vue from '../images/vue.png'
+import Github from '../images/github.png'
+import StyledLink from './StyledLink.jsx'
 
-import Card, {CardContent, CardMedia, CardActions} from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
-import Avatar from 'material-ui/Avatar';
-import Button from 'material-ui/Button';
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardActions from '@material-ui/core/CardActions'
 
-import CardStyle from '../styles/experienceCards';
+import Typography from '@material-ui/core/Typography'
+import Avatar from '@material-ui/core/Avatar'
+import Button from '@material-ui/core/Button'
 
-import List, {ListItem, ListItemText} from 'material-ui/List';
+import CardStyle from '../styles/experienceCards'
+
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
 
 const style = theme => ({
   ...CardStyle,
   media: {
     ...CardStyle.media,
-    backgroundSize: 'contain'
+    backgroundSize: 'contain',
   },
   button: {
     github: {
-      margin: theme.spacing.unit
+      margin: theme.spacing.unit,
     },
     rightIcon: {
-      marginLeft: theme.spacing.unit * 2
-    }
-  }
-});
+      marginLeft: theme.spacing.unit * 2,
+    },
+  },
+})
 
 const CardExperience = props => {
-  const {classes} = props;
+  const {classes} = props
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
@@ -87,17 +93,16 @@ const CardExperience = props => {
             Most of the time, I use Vuejs, React in a esNext environment. I love
             trying some other languages such as{' '}
             <StyledLink href="http://elm-lang.org/">Elm</StyledLink> or
-            <StyledLink href="https://reasonml.github.io/">
-              {' '}
-              Reason{' '}
-            </StyledLink>.
+            <StyledLink href="https://reasonml.github.io/"> Reason </StyledLink>
+            .
           </Typography>
         </CardContent>
         <CardActions>
           <Button
             className={classes.button.github}
             href="https://github.com/titouancreach"
-            color="default">
+            color="default"
+          >
             My github profile
             <img
               className={classes.button.rightIcon}
@@ -108,7 +113,7 @@ const CardExperience = props => {
         </CardActions>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default withStyles(style)(CardExperience);
+export default withStyles(style)(CardExperience)

@@ -1,19 +1,24 @@
-import React from 'react';
-import {withStyles} from 'material-ui/styles';
-import Work from '../images/work.jpg';
-import Cbs from '../images/cbs.png';
-import Eegle from '../images/eegle.png';
-import NeotecVision from '../images/ntv.png';
+import React from 'react'
+import {withStyles} from '@material-ui/core/styles'
+import Work from '../images/work.jpg'
+import Cbs from '../images/cbs.png'
+import Eegle from '../images/eegle.png'
+import NeotecVision from '../images/ntv.png'
 
-import Card, {CardContent, CardMedia} from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
-import Avatar from 'material-ui/Avatar';
-import CardStyle from '../styles/experienceCards';
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
 
-import List, {ListItem, ListItemText} from 'material-ui/List';
+import Typography from '@material-ui/core/Typography'
+import Avatar from '@material-ui/core/Avatar'
+import CardStyle from '../styles/experienceCards'
+
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
 
 const CardExperience = props => {
-  const {classes} = props;
+  const {classes} = props
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
@@ -48,7 +53,7 @@ const CardExperience = props => {
         </CardContent>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default withStyles(CardStyle)(CardExperience);
+export default withStyles(CardStyle)(CardExperience)
