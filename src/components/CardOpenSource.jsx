@@ -105,6 +105,7 @@ const CardExperience = props => {
           >
             My github profile
             <img
+              alt="github"
               className={classes.button.rightIcon}
               style={{marginLeft: 12}}
               src={Github}
