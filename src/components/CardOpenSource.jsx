@@ -1,7 +1,7 @@
 import React from 'react'
 import OpenSource from '../images/opensource.png'
-import Hyperapp from '../images/hyperapp.jpg'
-import Vue from '../images/vue.png'
+import Hyperapp from '../images/hyperapp.svg'
+import Vue from '../images/vue.svg'
 
 import {Avatar, Card, Button, List} from 'antd'
 
