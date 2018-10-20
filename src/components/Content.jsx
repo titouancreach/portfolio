@@ -1,50 +1,27 @@
 import React from 'react'
-import {withStyles} from '@material-ui/core/styles'
 import {Switch, Route} from 'react-router-dom'
+import {Layout} from 'antd'
+import {css, cx} from 'emotion'
 
 import AboutMe from './AboutMe.jsx'
 import Contact from './Contact.jsx'
 import Experience from './Experience.jsx'
 
-const styles = {
-  content: {
-    margin: 24,
-  },
-}
-
-const Content = props => {
-  const {classes} = props
+export default props => {
   return (
-    <main>
+    <Layout.Content
+      className={cx(
+        'pa4 flex flex-column items-center',
+        css`
+          margin-top: 64px;
+        `
+      )}
+    >
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <div className={classes.content}>
-              <AboutMe />
-            </div>
-          )}
-        />
-        <Route
-          path="/contact"
-          render={() => (
-            <div className={classes.content}>
-              <Contact />
-            </div>
-          )}
-        />
-        <Route
-          path="/experience"
-          render={() => (
-            <div className={classes.content}>
-              <Experience />
-            </div>
-          )}
-        />
+        <Route exact path="/" render={() => <AboutMe />} />
+        <Route path="/contact" render={() => <Contact />} />
+        <Route path="/experience" render={() => <Experience />} />
       </Switch>
-    </main>
+    </Layout.Content>
   )
 }
-
-export default withStyles(styles)(Content)

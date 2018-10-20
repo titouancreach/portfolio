@@ -1,83 +1,63 @@
 import React from 'react'
-import {withStyles} from '@material-ui/core/styles'
 import Epitech from '../images/epitech.jpg'
 import Python from '../images/python.svg'
 import Ocaml from '../images/ocaml.svg'
 import CPP from '../images/cpp.png'
 import C from '../images/c.png'
 import Java from '../images/java.png'
-import StyledLink from './StyledLink.jsx'
 
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Typography from '@material-ui/core/Typography'
-import Avatar from '@material-ui/core/Avatar'
-import CardStyle from '../styles/experienceCards'
+import {Card, List, Avatar} from 'antd'
 
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-
-const style = {
-  ...CardStyle,
-  media: {
-    ...CardStyle.media,
-    backgroundSize: 'contain',
-    border: '10px solid transparent',
+const list = [
+  {
+    avatar: C,
+    description: 'C (memory management)',
   },
-}
+  {
+    avatar: CPP,
+    description: 'C++ (object oriented programming)',
+  },
+  {
+    avatar: Python,
+    description: 'Python (dynamic programming)',
+  },
+  {
+    avatar: Ocaml,
+    description: 'Ocaml (functional programming)',
+  },
+  {
+    avatar: Java,
+    description: 'Java (web services)',
+  },
+]
 
-const CardEpitech = props => {
-  const {classes} = props
+const CardEpitech = () => {
   return (
-    <div className={classes.root}>
-      <Card className={classes.card}>
-        <CardMedia className={classes.media} image={Epitech} title="Epitech" />
-        <CardContent>
-          <Typography variant="headline" component="h2">
-            Epitech
-          </Typography>
-          <Typography component="p">
-            Graduated from Epitech Rennes (promotion 2017). I saw the basics of
-            programming. <br />
-            At the menu:
-          </Typography>
-          <List dense>
-            <ListItem>
-              <Avatar src={C} />
-              <ListItemText primary="C (memory management)" />
-            </ListItem>
-            <ListItem>
-              <Avatar src={CPP} />
-              <ListItemText primary="C++ (object oriented programming)" />
-            </ListItem>
-            <ListItem>
-              <Avatar src={Python} />
-              <ListItemText primary="Python (dynamic programming)" />
-            </ListItem>
-            <ListItem>
-              <Avatar src={Ocaml} />
-              <ListItemText primary="Ocaml (functional programming)" />
-            </ListItem>
-            <ListItem>
-              <Avatar src={Java} />
-              <ListItemText primary="Java (web services)" />
-            </ListItem>
-          </List>
-          <Typography component="p">
-            Beside, I had the opportunity to travel one year in Dublin (Ireland)
-            where I was graduated from{' '}
-            <StyledLink href="https://www.griffith.ie/">
-              {' '}
-              Griffith College{' '}
-            </StyledLink>
-            (Business certification) <br />
-          </Typography>
-        </CardContent>
-      </Card>
-    </div>
+    <Card className="mw7 pa3 mb3" cover={<img alt="epitech" src={Epitech} />}>
+      <h2> Education </h2>
+      Graduated from Epitech Rennes (promotion 2017). I saw the basics of
+      programming. <br />
+      At the menu:
+      <List
+        className="mv3"
+        dataSource={list}
+        renderItem={item => (
+          <List.Item>
+            <List.Item.Meta
+              avatar={<Avatar src={item.avatar} />}
+              title={item.description}
+            />
+          </List.Item>
+        )}
+      />
+      <p>
+        Beside, I had the opportunity to travel one year in Dublin (Ireland)
+        where I was graduated from{' '}
+        <a href="https://www.griffith.ie/">Griffith College</a> (Business
+        certification) <br />
+      </p>
+    </Card>
   )
 }
 
-export default withStyles(style)(CardEpitech)
+export default CardEpitech

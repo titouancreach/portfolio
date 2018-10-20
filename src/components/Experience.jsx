@@ -5,11 +5,11 @@ import CardOpenSource from './CardOpenSource.jsx'
 
 const Experience = () => {
   return (
-    <React.Fragment>
+    <>
       <CardEpitech />
       <CardExperience />
       <CardOpenSource />
-    </React.Fragment>
+    </>
   )
 }
 

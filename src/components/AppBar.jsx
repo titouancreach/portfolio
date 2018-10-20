@@ -1,54 +1,45 @@
 import React from 'react'
-import {withStyles} from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
+import {Layout, Menu} from 'antd'
+import {css, cx} from 'emotion'
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    flex: 1,
-    '&:hover': {
-      cursor: 'pointer',
-    },
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-}
+// disable ant design css rule
+const noUnderline = css`
+  &:focus {
+    text-decoration: none;
+  }
+`
 
 function Appbar(props) {
-  const {classes, history} = props
+  const path = props.location.pathname
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography
-            variant="title"
-            color="inherit"
-            className={classes.title}
-            onClick={() => history.push('/')}
-          >
-            Portfolio
-          </Typography>
-          <Button color="inherit" onClick={() => history.push('/')}>
-            About me
-          </Button>
-          <Button color="inherit" onClick={() => history.push('/experience')}>
-            Education and Experience
-          </Button>
-          <Button color="inherit" onClick={() => history.push('/contact')}>
-            Contact
-          </Button>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <Layout.Header
+      className={cx(
+        'w-100 fixed z-1  w-100 flex justify-between ph3-ns ph1',
+        noUnderline
+      )}
+    >
+      <Link to="/" className="mr6">
+        <h1 className="ma0 white no-underline">Portfolio</h1>
+      </Link>
+      <Menu
+        selectedKeys={[path]}
+        mode="horizontal"
+        className={cx(css({lineHeight: '64px', minWidth: 0}))}
+        theme="dark"
+      >
+        <Menu.Item key="/">
+          <Link to="/">About me</Link>
+        </Menu.Item>
+        <Menu.Item key="/experience">
+          <Link to="/experience">Eductaion and Experience</Link>
+        </Menu.Item>
+        <Menu.Item key="/contact">
+          <Link to="/contact">Contact</Link>
+        </Menu.Item>
+      </Menu>
+    </Layout.Header>
   )
 }
 
-export default withRouter(withStyles(styles)(Appbar))
+export default withRouter(Appbar)

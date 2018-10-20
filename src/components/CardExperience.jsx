@@ -5,54 +5,46 @@ import Cbs from '../images/cbs.png'
 import Eegle from '../images/eegle.png'
 import NeotecVision from '../images/ntv.png'
 
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-
-import Typography from '@material-ui/core/Typography'
-import Avatar from '@material-ui/core/Avatar'
 import CardStyle from '../styles/experienceCards'
 
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
+import {Avatar, Card, List} from 'antd'
+
+const items = [
+  {
+    avatar: Cbs,
+    description: 'CBS Interactive (artificial intelligence in python and java)',
+    duration: 'intern - 2012-2013',
+  },
+  {
+    avatar: NeotecVision,
+    description: 'Neotec vision (image processing in C and C++)',
+    duration: 'intern - 2014-2015 & 2016-2017',
+  },
+  {
+    avatar: Eegle,
+    description:
+      'Eegle (Geographic data processing, modern stack using Vuejs and python)',
+    duration: 'Fullstack web developper - 2017-2018',
+  },
+]
 
 const CardExperience = props => {
-  const {classes} = props
   return (
-    <div className={classes.root}>
-      <Card className={classes.card}>
-        <CardMedia className={classes.media} image={Work} title="Work" />
-        <CardContent>
-          <Typography variant="headline" component="h2">
-            Experience
-          </Typography>
-          <List dense>
-            <ListItem>
-              <Avatar src={Cbs} />
-              <ListItemText
-                primary="CBS Interactive (artificial intelligence in python and java)"
-                secondary="intern - 2012-2013"
-              />
-            </ListItem>
-            <ListItem>
-              <Avatar src={NeotecVision} />
-              <ListItemText
-                primary="Neotec vision (image processing in C and C++)"
-                secondary="intern - 2014-2015 & 2016-2017"
-              />
-            </ListItem>
-            <ListItem>
-              <Avatar src={Eegle} />
-              <ListItemText
-                primary="Eegle (Geographic data processing, modern stack using Vuejs and python)"
-                secondary="Lead dev - 2017-now"
-              />
-            </ListItem>
-          </List>
-        </CardContent>
-      </Card>
-    </div>
+    <Card className="mw7 pa3 mb3" cover={<img alt="work" src={Work} />}>
+      <h2> Experience </h2>
+      <List
+        dataSource={items}
+        renderItem={item => (
+          <List.Item>
+            <List.Item.Meta
+              avatar={<Avatar src={item.avatar} />}
+              title={item.description}
+              description={item.duration}
+            />
+          </List.Item>
+        )}
+      />
+    </Card>
   )
 }
 
