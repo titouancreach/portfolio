@@ -1,11 +1,9 @@
 import React from 'react'
-import {withStyles} from '@material-ui/core/styles'
 import Work from '../images/work.jpg'
 import Cbs from '../images/cbs.png'
 import Eegle from '../images/eegle.png'
 import NeotecVision from '../images/ntv.png'
-
-import CardStyle from '../styles/experienceCards'
+import Klaxoon from '../images/klaxoon.png'
 
 import {Avatar, Card, List} from 'antd'
 
@@ -25,6 +23,11 @@ const items = [
     description:
       'Eegle (Geographic data processing, modern stack using Vuejs and python)',
     duration: 'Fullstack web developper - 2017-2018',
+  },
+  {
+    avatar: Klaxoon,
+    description: 'Klaxoon',
+    duration: 'Web developper - 2018-now',
   },
 ]
 
@@ -48,4 +51,4 @@ const CardExperience = props => {
   )
 }
 
-export default withStyles(CardStyle)(CardExperience)
+export default CardExperience
