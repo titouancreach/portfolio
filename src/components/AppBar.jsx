@@ -13,13 +13,8 @@ const noUnderline = css`
 function Appbar(props) {
   const path = props.location.pathname
   return (
-    <Layout.Header
-      className={cx(
-        'w-100 fixed z-1  w-100 flex justify-between ph3-ns ph1',
-        noUnderline
-      )}
-    >
-      <Link to="/" className="mr6">
+    <Layout.Header className="w-100 fixed z-1  w-100 flex justify-between ph3-ns ph1">
+      <Link to="/" className={cx('mr6', noUnderline)}>
         <h1 className="ma0 white no-underline">Portfolio</h1>
       </Link>
       <Menu
