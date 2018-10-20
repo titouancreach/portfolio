@@ -8,6 +8,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "homepage": "http://titouancreach.github.io/portfolio",
   "repository": "git@github.com:titouancreach/portfolio.git",
   "author": "titouan <titouan.creach@gmail.com>",
   "license": "MIT",
