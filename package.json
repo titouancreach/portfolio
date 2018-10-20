@@ -3,24 +3,42 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "parcel build ./src/index.html --public-url='./'",
-    "dev": "parcel ./src/index.html",
-    "format": "prettier src/**/*.{js,jsx} --write --single-quote  --no-bracket-spacing --jsx-bracket-same-line"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "http://titouancreach.github.io/portfolio",
   "repository": "git@github.com:titouancreach/portfolio.git",
   "author": "titouan <titouan.creach@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "material-ui": "^1.0.0-beta.35",
-    "material-ui-icons": "^1.0.0-beta.35",
-    "parcel-bundler": "^1.6.2",
-    "prettier": "^1.11.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.6",
+    "@fortawesome/free-brands-svg-icons": "^5.4.1",
+    "@fortawesome/free-solid-svg-icons": "^5.4.1",
+    "@fortawesome/react-fontawesome": "^0.1.3",
+    "antd": "^3.10.1",
+    "emotion": "^9.2.12",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-fontawesome": "^1.6.1",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "tachyons": "^4.11.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1",
+    "prettier": "^1.14.3",
+    "react-scripts": "^2.0.4"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }

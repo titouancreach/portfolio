@@ -1,179 +1,81 @@
-import React from 'react';
-import {withStyles} from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import {FormControl, FormHelperText} from 'material-ui/Form';
-import Input, {InputLabel} from 'material-ui/Input';
-import Icon from 'material-ui/Icon';
-import Button from 'material-ui/Button';
+import React from 'react'
+import {Card, Form, Button, Input, Icon} from 'antd'
+import {css} from 'emotion'
 
-const styles = theme => ({
-  root: {
-    maxWidth: '60%',
-    margin: 'auto'
-  },
-  paper: {
-    padding: 16
-  },
-  iconButton: {
-    marginLeft: theme.spacing.unit
-  },
-  inputContainer: {
-    marginBottom: theme.spacing.unit * 2
-  }
-});
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
+const EmailIcon = () => {
+  return (
+    <FontAwesomeIcon
+      icon="at"
+      className={css`
+        color: #bebebe;
+      `}
+    />
+  )
+}
 class Contact extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: {
-        validationStarted: false,
-        text: ''
-      },
-      subject: {
-        validationStarted: false,
-        text: ''
-      },
-      message: {
-        validationStarted: false,
-        text: ''
+  handleSumbit = e => {
+    this.props.form.validateFields((err, values) => {
+      if (err) {
+        e.preventDefault()
       }
-    };
-  }
-
-  isEmailValid(email) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  }
-
-  isEmpty(s) {
-    return !s;
-  }
-
-  isShort(s) {
-    return s.length < 10;
-  }
-
-  isValid(key) {
-    const {text} = this.state[key];
-    switch (key) {
-      case 'email': {
-        return this.isEmailValid(text) && !this.isEmpty(text);
-      }
-      case 'subject':
-      case 'message':
-        return !this.isShort(text);
-    }
-  }
-
-  isAllValid() {
-    return Object.keys(this.state).every(::this.isValid);
-  }
-
-  assignState(key) {
-    return e => {
-      this.setState({
-        [key]: {
-          text: e.target.value,
-          validationStarted: true
-        }
-      });
-    };
+    })
   }
 
   render() {
-    const {classes} = this.props;
+    const {getFieldDecorator} = this.props.form
     return (
-      <div className={classes.root}>
-        <Paper elevation={4} className={classes.paper}>
-          <Typography variant="headline" component="h3">
-            Get in touch
-          </Typography>
-          <form action="https://jumprock.co/mail/titouancreach" method="post">
-            <div className={classes.inputContainer}>
-              <FormControl
-                fullWidth
-                className={classes.formControl}
-                error={
-                  !this.isValid('email') && this.state.email.validationStarted
-                }
-                margin="normal">
-                <InputLabel htmlFor="email">email</InputLabel>
-                <Input
-                  id="email"
-                  name="email"
-                  value={this.state.email.text}
-                  onChange={this.assignState('email')}
-                />
-                {!this.isValid('email') &&
-                this.state.email.validationStarted ? (
-                  <FormHelperText id="">Invalid email</FormHelperText>
-                ) : null}
-              </FormControl>
-              <FormControl
-                fullWidth
-                className={classes.formControl}
-                error={
-                  !this.isValid('subject') &&
-                  this.state.subject.validationStarted
-                }
-                margin="normal">
-                <InputLabel htmlFor="subject">subject</InputLabel>
-                <Input
-                  id="subject"
-                  name="subject"
-                  value={this.state.subject.text}
-                  onChange={this.assignState('subject')}
-                />
-                {!this.isValid('subject') &&
-                this.state.subject.validationStarted ? (
-                  <FormHelperText id="">
-                    Invalid subject, at least 10 characters
-                  </FormHelperText>
-                ) : null}
-              </FormControl>
-              <FormControl
-                fullWidth
-                className={classes.formControl}
-                error={
-                  !this.isValid('message') &&
-                  this.state.message.validationStarted
-                }
-                margin="normal">
-                <InputLabel htmlFor="message">message</InputLabel>
-                <Input
-                  id="message"
-                  name="message"
-                  value={this.state.message.text}
-                  onChange={this.assignState('message')}
-                />
-                {!this.isValid('message') &&
-                this.state.message.validationStarted ? (
-                  <FormHelperText id="">
-                    Invalid message, at least 10 characters
-                  </FormHelperText>
-                ) : null}
-              </FormControl>
-              <input
-                type="hidden"
-                name="after"
-                value={`${window.location.origin}/portfolio`}
+      <Card className="pa3 w-60-ns">
+        <Form
+          onSubmit={this.handleSumbit}
+          action="https://jumprock.co/mail/titouancreach"
+          method="post"
+        >
+          <Form.Item label="email" htmlFor="email">
+            {getFieldDecorator('email', {
+              rules: [
+                {required: true, message: 'Email is required'},
+                {type: 'email', message: 'Invalid email'},
+              ],
+            })(
+              <Input
+                prefix={<Icon component={EmailIcon} />}
+                type="email"
+                name="email"
+                placeholder="example@domain.com"
               />
-            </div>
-            <Button
-              variant="raised"
-              color="primary"
-              type="submit"
-              disabled={!this.isAllValid()}>
-              Send
-              <Icon className={classes.iconButton}>send</Icon>
-            </Button>
-          </form>
-        </Paper>
-      </div>
-    );
+            )}
+          </Form.Item>
+          <Form.Item label="subject" htmlFor="subject">
+            {getFieldDecorator('subject', {
+              rules: [{required: true, message: 'Subject is required'}],
+            })(<Input type="text" placeholder="[Subject]" name="subject" />)}
+          </Form.Item>
+          <Form.Item label="message" htmlFor="message">
+            {getFieldDecorator('message', {
+              rules: [{required: true, message: 'Email is required'}],
+            })(
+              <Input.TextArea
+                type="text"
+                placeholder="Dear Titouan, ..."
+                name="message"
+                autosize
+              />
+            )}
+          </Form.Item>
+          <input
+            type="hidden"
+            name="after"
+            value={`${window.location.origin}/portfolio`}
+          />
+          <Button type="primary" htmlType="submit">
+            Send
+          </Button>
+        </Form>
+      </Card>
+    )
   }
 }
 
-export default withStyles(styles)(Contact);
+export default Form.create()(Contact)
