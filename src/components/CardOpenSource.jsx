@@ -61,7 +61,7 @@ export default function() {
         <a href="http://elm-lang.org/">Elm</a> or
         <a href="https://reasonml.github.io/"> Reason </a>
       </p>
-      <a href="https://github.com/titouancreach/portfolio">
+      <a href="https://github.com/titouancreach/">
         <Button icon="github">Checkout my Github profile</Button>
       </a>
     </Card>
