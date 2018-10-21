@@ -11,14 +11,18 @@ import {
 import {faAt} from '@fortawesome/free-solid-svg-icons'
 import {Layout} from 'antd'
 
+import {HashRouter} from 'react-router-dom'
+
 library.add(faGithub, faTwitter, faStackOverflow, faLinkedin, faAt)
 
 const App = () => {
   return (
-    <Layout className="min-h-100">
-      <AppBar />
-      <Content />
-    </Layout>
+    <HashRouter>
+      <Layout className="min-h-100">
+        <AppBar />
+        <Content />
+      </Layout>
+    </HashRouter>
   )
 }
 
