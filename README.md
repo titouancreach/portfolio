@@ -1,18 +1,27 @@
 # portfolio
-The source code of https://titouancreach.github.io/portfolio/#/.
 
-To run locally: 
+The source code of https://titouancreach.github.io/portfolio/.
+
+To run locally:
 
 ```shell
-yarn && yarn run dev
+npm && npm start
 ```
 
 Build for production:
+
 ```shell
-yarn run build
+npm run build
+```
+
+Deploy to gh pages
+
+```shell
+npm run deploy
 ```
 
 Format code using prettier
+
 ```shell
-yarn run format
+npm run format
 ```
