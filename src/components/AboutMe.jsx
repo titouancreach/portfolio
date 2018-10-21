@@ -24,6 +24,14 @@ const StackoverflowIcon = () => {
   return <FontAwesomeIcon icon={['fab', 'stack-overflow']} />
 }
 
+const HighlightIconLink = ({color, icon, href}) => {
+  return (
+    <a href={href} className={cx('mr3 gray', css({':hover': {color: color}}))}>
+      <Icon component={icon} />
+    </a>
+  )
+}
+
 export default function() {
   return (
     <Card
@@ -31,58 +39,26 @@ export default function() {
       cover={<img alt="me" src={Photo} />}
       extra={
         <div className="f3">
-          <a
+          <HighlightIconLink
             href="https://github.com/titouancreach"
-            className={cx(
-              'mr3 gray',
-              css`
-                &:hover {
-                  color: #000;
-                }
-              `
-            )}
-          >
-            <Icon component={GithubIcon} />
-          </a>
-          <a
+            color="#000"
+            icon={GithubIcon}
+          />
+          <HighlightIconLink
             href="https://twitter.com/titouancreach"
-            className={cx(
-              'mr3 gray',
-              css`
-                &:hover {
-                  color: #00aced;
-                }
-              `
-            )}
-          >
-            <Icon component={TwitterIcon} />
-          </a>
-          <a
+            color="#00ACED"
+            icon={TwitterIcon}
+          />
+          <HighlightIconLink
             href="https://fr.linkedin.com/in/titouan-cr%C3%A9ac-h-6403a487"
-            className={cx(
-              'mr3 gray',
-              css`
-                &:hover {
-                  color: #2671b1;
-                }
-              `
-            )}
-          >
-            <Icon component={LinkedinIcon} />
-          </a>
-          <a
+            color="#2671B1"
+            icon={LinkedinIcon}
+          />
+          <HighlightIconLink
             href="https://stackoverflow.com/users/2190535/epitouille"
-            className={cx(
-              'mr3 gray',
-              css`
-                &:hover {
-                  color: #f48024;
-                }
-              `
-            )}
-          >
-            <Icon component={StackoverflowIcon} />
-          </a>
+            color="#F48024"
+            icon={StackoverflowIcon}
+          />
         </div>
       }
     >
@@ -96,10 +72,10 @@ export default function() {
       </p>
 
       <Link to="/experience">
-        <Button>Experience</Button>
+        <Button className="mt2">Experience</Button>
       </Link>
       <a href="https://github.com/titouancreach/portfolio" className="ml2-ns">
-        <Button>Website source code</Button>
+        <Button className="mt2">Website source code</Button>
       </a>
     </Card>
   )
