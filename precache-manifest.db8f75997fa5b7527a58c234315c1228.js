@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/portfolio/static/media/python.fbef321e.svg"
   },
   {
-    "revision": "4a9b9bcba518087ba918",
-    "url": "/portfolio/static/css/main.dbe1f0d4.chunk.css"
+    "revision": "d841ed72e5b20edbd49d",
+    "url": "/portfolio/static/css/main.d38974ec.chunk.css"
   },
   {
     "revision": "938241fe1d52cf5b525889e1078bc737",
     "url": "/portfolio/static/media/vue.938241fe.svg"
   },
   {
-    "revision": "752b34f51f124608b2c4",
-    "url": "/portfolio/static/js/1.752b34f5.chunk.js"
+    "revision": "d0d6538f2d4176aea8ed",
+    "url": "/portfolio/static/js/1.d0d6538f.chunk.js"
   },
   {
     "revision": "ee2a100325fd284f0097",
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "/portfolio/static/media/epitech.8313c378.jpg"
   },
   {
-    "revision": "4a9b9bcba518087ba918",
-    "url": "/portfolio/static/js/main.4a9b9bcb.chunk.js"
+    "revision": "d841ed72e5b20edbd49d",
+    "url": "/portfolio/static/js/main.d841ed72.chunk.js"
   },
   {
     "revision": "5f49bec46573d24d6c2cda4804760740",
@@ -52,11 +52,11 @@ self.__precacheManifest = [
     "url": "/portfolio/static/media/hyperapp.95e2d339.svg"
   },
   {
-    "revision": "752b34f51f124608b2c4",
-    "url": "/portfolio/static/css/1.df560d01.chunk.css"
+    "revision": "d0d6538f2d4176aea8ed",
+    "url": "/portfolio/static/css/1.a0c51753.chunk.css"
   },
   {
-    "revision": "4ae6f60f1e21dd5a6d142e64a84da793",
+    "revision": "5e6e114cc9d090ac1d187b91aaf650b9",
     "url": "/portfolio/index.html"
   }
 ];
